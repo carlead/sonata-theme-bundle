@@ -1,0 +1,14 @@
+{
+    "name": "calead/sonata-theme-bundle",
+    "description": "SonataAdminBundle theme",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Dev Dev",
+            "email": "dev1@adstrategy.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Carlead\\SonataThemeBundle\\": "" }
+    }
+}
