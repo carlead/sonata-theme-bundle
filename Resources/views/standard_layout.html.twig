@@ -202,24 +202,14 @@
                             {% block sonata_top_nav_menu %}
                                 {% if app.user and is_granted(sonata_admin.adminPool.getOption('role_admin')) %}
                                     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                                        {% block sonata_top_nav_menu_add_block %}
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false">
-                                                    <i class="fa fa-plus fa-fw" aria-hidden="true"></i> <span class="clearfix d-none d-sm-inline-block">Add</span
-                                                </a>
-                                                {% include get_global_template('add_block') %}
-                                            </li>
-                                        {% endblock %}
                                         {% block sonata_top_nav_menu_user_block %}
-                                            <li class="nav-item dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    <i class="fa fa-user fa-fw" aria-hidden="true"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span
+                                            <li class="nav-item dropdown">	  
+                                                <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" data-target="#user_links" href="#">
+                                                    <i class="fa fa-user" aria-hidden="true"></i> 
+													<span class="clearfix d-none d-sm-inline-block">{{app.user}}</span>
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                                    <ul>
-                                                        {% include get_global_template('user_block') %}
-                                                    </ul>
+                                                <div class="dropdown-menu dropdown-menu-right" id="user_links">
+													{% include '@CarleadSonataTheme/Core/user_block.html.twig' %}
                                                 </div>
                                             </li>
                                         {% endblock %}
@@ -255,13 +245,13 @@
                                         {% endblock %}
 
                                         <!-- Collapse button -->
-                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-list"
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_list"
                                                 aria-controls="nav-list" aria-expanded="false" aria-label="Toggle navigation">
                                             <span class="navbar-toggler-icon"></span>
                                         </button>
 
                                         <!-- Collapsible content -->
-                                        <div class="collapse navbar-collapse" id="nav-list">
+                                        <div class="collapse navbar-collapse" id="nav_list">
 
                                             <!-- Links -->
                                             {% if _tab_menu is not empty %}
