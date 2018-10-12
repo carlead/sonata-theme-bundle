@@ -1,8 +1,8 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block root %}
-    {%- set listAttributes = item.childrenAttributes|merge({'class': 'nav side-menu', 'data-widget': 'tree'}) %}
-    {%- set request        = item.extra('request') ?: app.request %}
+    {%- set listAttributes = item.childrenAttributes|merge({'class': 'collapsible collapsible-accordion'}) %}
+    {%- set request = item.extra('request') ?: app.request %}
     {{ block('list') -}}
 {% endblock %}
 
@@ -16,9 +16,9 @@
     {%- endif %}
 
     {%- if item.displayed and display|default %}
-        {% set options = options|merge({branch_class: 'treeview', currentClass: "active", ancestorClass: "active"}) %}
+        {% set options = options|merge({branch_class: '', currentClass: "active", ancestorClass: "active"}) %}
         {%- do item.setChildrenAttribute('class', (item.childrenAttribute('class')~' active')|trim) %}
-        {%- do item.setChildrenAttribute('class', (item.childrenAttribute('class')~' treeview-menu nav child_menu')|trim) %}
+        {%- do item.setChildrenAttribute('class', (item.childrenAttribute('class')~' collapsible-body')|trim) %}
         {{ parent() }}
     {% endif %}
 {% endblock %}
@@ -38,13 +38,13 @@
 
 {% block spanElement %}
     {% spaceless %}
-        <a href="#">
+        <a href="#" {%- if item.extra('keep_open') is not defined or not item.extra('keep_open') -%}class="collapsible-header waves-effect arrow-r"{%- endif -%}>
             {% set translation_domain = item.extra('label_catalogue') %}
             {% set icon = item.extra('icon')|default('') %}
             {{ icon|raw }}
             {{ parent() }}
             {%- if item.extra('keep_open') is not defined or not item.extra('keep_open') -%}
-                <span class="pull-right-container"><i class="fa pull-right fa-angle-left"></i></span>
+                <i class="fa fa-angle-down rotate-icon"></i>
             {%- endif -%}
         </a>
     {% endspaceless %}
