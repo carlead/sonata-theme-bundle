@@ -172,9 +172,9 @@
                                                         {%- endif -%}
 
                                                         {% if not loop.last %}
-                                                            <li>
+                                                            <li class="breadcrumb-item">
                                                                 {% if menu.uri is not empty %}
-                                                                    <a href="{{ menu.uri }}">
+                                                                    <a href="{{ menu.uri }}" class="black-text">
                                                                         {% if menu.extra('safe_label', true) %}
                                                                             {{- label|raw -}}
                                                                         {% else %}
@@ -186,7 +186,7 @@
                                                                 {% endif %}
                                                             </li>
                                                         {% else %}
-                                                            <li class="active"><span>{{ label }}</span></li>
+                                                            <li class="breadcrumb-item active black-text">{{ label }}</li>
                                                                 {% endif %}
                                                             {% endfor %}
                                                         {% endif %}
