@@ -1,6 +1,6 @@
 {
     "name": "calead/sonata-theme-bundle",
-    "description": "SonataAdminBundle theme",
+    "description": "Sonata admin bundle theme",
     "type": "symfony-bundle",
     "authors": [
         {
